@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Search, ShoppingCart, Menu, X, Plus, Star } from "lucide-react"
 import { useState, useEffect } from "react"
-import Image from "next/image"
+// import Image from "next/image"
 
 interface CartItem {
   id: number
@@ -93,12 +93,14 @@ export default function Header({ cartItems, setCartItems, cartOpen, setCartOpen,
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4 md:space-x-8">
             <a href="/">
-              <Image
+              <img
                 src="/logo.svg"
                 alt="Snuzz"
                 width={120}
                 height={40}
                 className="h-8 md:h-10 w-auto drop-shadow-sm"
+                loading="lazy"
+                draggable={false}
               />
             </a>
             <div

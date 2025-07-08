@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -87,13 +87,15 @@ export default function Home() {
             </div>
             {/* Right Hero SVG Image - much larger, fills hero section */}
             <div className="flex items-center justify-end w-full h-full min-h-[300px] sm:min-h-[400px] md:min-h-[600px] lg:min-h-[900px]">
-              <Image
+              <img
                 src="/group-32.svg"
                 alt="Hero visual"
                 className="object-contain drop-shadow-xl pointer-events-none relative top-[48px] sm:top-[108px] left-0"
                 width={340}
                 height={340}
                 style={{ borderRadius: "692.17px", maxWidth: '100%', height: 'auto' }}
+                loading="lazy"
+                draggable={false}
               />
             </div>
           </div>

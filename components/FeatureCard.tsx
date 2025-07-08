@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function FeatureCard() {
   return (
@@ -10,12 +10,14 @@ export default function FeatureCard() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-16">
             <div className="flex flex-col items-center text-center space-y-4 flex-1 max-w-xs group  transform translate-y-12">
               <div className="relative overflow-hidden rounded-lg">
-                <Image
+                <img
                   src="/dollar.svg"
                   alt="Best Price on Market"
                   className="shadow-xl transition-transform duration-300 group-hover:scale-110"
                   width={180}
                   height={160}
+                  loading="lazy"
+                  draggable={false}
                 />
                </div>
               <div className="space-y-1">
@@ -25,12 +27,14 @@ export default function FeatureCard() {
             </div>
             <div className="flex flex-col items-center text-center space-y-0 flex-1 max-w-xs group">
               <div className="relative overflow-hidden rounded-lg">
-                <Image
+                <img
                   src="/icon3-clean.svg"
                   alt="Free Shipping"
                   className="shadow-xl transition-transform duration-300 group-hover:scale-110"
                   width={200}
                   height={160}
+                  loading="lazy"
+                  draggable={false}
                 />
               </div>
               <div className="space-y-1">
@@ -39,12 +43,14 @@ export default function FeatureCard() {
             </div>
             <div className="flex flex-col items-center text-center flex-1 max-w-xs group">
               <div className="relative overflow-hidden rounded-lg">
-                <Image
+                <img
                   src="/icon2-clean.svg"
                   alt="Exclusive Brands"
                   className="shadow-xl transition-transform duration-300 group-hover:scale-110"
                   width={200}
                   height={160}
+                  loading="lazy"
+                  draggable={false}
                 />
               </div>
               <div className="space-y-1">

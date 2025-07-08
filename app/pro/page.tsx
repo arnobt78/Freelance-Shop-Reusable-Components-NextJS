@@ -1,6 +1,6 @@
 "use client"
 
-import Image from "next/image"
+// import Image from "next/image"
 import { ChevronDown, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -96,12 +96,14 @@ export default function SnuzzProLanding() {
       <section className="flex flex-col items-center justify-center px-8 py-20 bg-gray-50">
         <div className="bg-white rounded-2xl shadow-lg p-12 max-w-md w-full text-center">
           <div className="mb-8">
-            <Image
+            <img
               src="/pro-logo.png"
               alt="Snuzz PRO"
               width={200}
               height={60}
               className="h-12 w-auto mx-auto mb-6"
+              loading="lazy"
+              draggable={false}
             />
             <div className="space-y-1 text-gray-500">
               <p>Unleash the Power of</p>
