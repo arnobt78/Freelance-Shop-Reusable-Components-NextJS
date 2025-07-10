@@ -1,11 +1,13 @@
 
-# Snuzz E-Commerce Platform
+# Snuzz E-Commerce Platform - Next.js Resuable Components
+
+<img width="1300" height="680" alt="Screenshot 2025-07-10 at 15 16 30" src="https://github.com/user-attachments/assets/04d4e5b8-2c45-4887-afff-288a0cca4110" /> <img width="1300" height="680" alt="Screenshot 2025-07-10 at 15 17 06" src="https://github.com/user-attachments/assets/c7594508-d07d-4b86-a397-8fce30c9827e" /> <img width="1300" height="680" alt="Screenshot 2025-07-10 at 15 48 52" src="https://github.com/user-attachments/assets/95406d79-c391-427e-8c9b-8fb87e8cfdd7" /> <img width="1300" height="680" alt="Screenshot 2025-07-10 at 15 49 21" src="https://github.com/user-attachments/assets/53e1598f-c9ed-4eb2-9ea5-e04d5a69b1bb" /> <img width="1300" height="680" alt="Screenshot 2025-07-10 at 15 49 43" src="https://github.com/user-attachments/assets/9e7173f9-908d-4ee6-b1df-cbe9749ccf84" /> <img width="1300" height="680" alt="Screenshot 2025-07-10 at 15 50 11" src="https://github.com/user-attachments/assets/64654463-a4a7-4568-b298-7842ea4b958c" /> <img width="1300" height="650" alt="Screenshot 2025-07-10 at 15 50 36" src="https://github.com/user-attachments/assets/ee2d3bb0-4ac3-4162-b33d-4924ba265156" /> <img width="1300" height="550" alt="Screenshot 2025-07-10 at 15 53 57" src="https://github.com/user-attachments/assets/98e51f1d-7552-42f5-9489-605e7c5cdd89" /> <img width="1300" height="650" alt="Screenshot 2025-07-10 at 15 54 11" src="https://github.com/user-attachments/assets/1ca78a76-b617-4c0c-bc24-a7dff38b38c3" />
 
 ---
 
 A modern, modular, and production-ready e-commerce web application built with Next.js 15, React, TypeScript, Tailwind CSS, and Radix UI. Snuzz provides a beautiful, responsive shopping experience with real-world cart, checkout, and product detail flows.
 
-**Live-Demo:** [https://snuzz-pro.vercel.app/](https://snuzz-pro.vercel.app/)
+- **Live-Demo:** [https://snuzz-pro.vercel.app/](https://snuzz-pro.vercel.app/)
 
 ---
 
