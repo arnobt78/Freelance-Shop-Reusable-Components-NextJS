@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { SingleProductCard } from "./SingleProductCard";
+import ProductGrid from "@/components/ProductCard/List/ProductGrid";
 import { useProductPagination } from "./useProductPagination";
 import { Pagination } from "../Pagination/Pagination";
 import { useCart } from "@/context/CartContext";
@@ -50,6 +50,7 @@ export const ListProductCard: React.FC<ListProductCardProps> = ({ products, addT
             quantity: 1,
             image: product.image || product.productImage,
             brand: product.brand,
+            slug: product.slug,
           },
         ];
       }
@@ -58,35 +59,30 @@ export const ListProductCard: React.FC<ListProductCardProps> = ({ products, addT
 
   const router = useRouter();
 
+  // Pagination logic: show 6 per page
+  const { page, setPage, totalPages, paginated } = useProductPagination(products, 6);
+
   return (
     <div className="flex flex-col items-center w-full lg:px-2 sm:px-0">
-      <div
-        className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-4 sm:gap-x-4 sm:gap-y-6 justify-items-center w-full max-w-5xl mt-6 sm:px-2 min-h-[200px]"
-      >
-        {products.length > 0 ? (
-          products.map((product, idx) => (
-            <div
-              className="w-full flex justify-center"
-              key={product.id || idx}
-            >
-              <SingleProductCard
-                {...product}
-                addToCart={e => {
-                  if (e && e.stopPropagation) e.stopPropagation();
-                  handleAddToCart(product);
-                }}
-                onCardClick={() => router.push(`/product-detail?idx=${product.id ?? idx}`)}
-              />
-            </div>
-          ))
-        ) : (
-          <div className="col-span-full flex flex-col items-center justify-center w-full min-h-[180px] py-8">
-            <span className="text-lg sm:text-xl font-semibold text-gray-500 text-center">
-              No products matched your category filter.
-            </span>
-          </div>
-        )}
-      </div>
+      <ProductGrid
+        products={paginated}
+        handleAddToCart={handleAddToCart}
+        onCardClick={(product, idx) => {
+          if (product.slug) {
+            router.push(`/product-detail/${product.slug}`);
+          } else {
+            // fallback: try idx-based navigation (should not happen if data is correct)
+            router.push(`/product-detail?idx=${product.id ?? idx}`);
+          }
+        }}
+      />
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={page}
+          totalPages={totalPages}
+          onPageChange={setPage}
+        />
+      )}
     </div>
   );
 };

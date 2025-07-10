@@ -21,8 +21,9 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import { useCart } from "@/context/CartContext"
-import Header from "@/components/Header"
-import Footer from "@/components/Footer"
+// import Header from "@/components/Header"
+// import Footer from "@/components/Footer"
+import CartSummaryDetails from "@/components/Cart/CartSummaryDetails"
 
 export default function CartPage() {
   const { cartItems, setCartItems, cartOpen, setCartOpen } = useCart()
@@ -75,7 +76,7 @@ export default function CartPage() {
   if (cartItems.length === 0) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
-        <Header />
+        {/* <Header /> */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-32">
           <div className="text-center py-20">
             <div className="relative">
@@ -90,7 +91,7 @@ export default function CartPage() {
             <p className="text-lg text-gray-600 mb-10 max-w-md mx-auto leading-relaxed">
               Discover our curated collection of premium products and start building your perfect order.
             </p>
-            <Link href="/">
+            <Link href="/products">
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-[#3AF0F7] to-[#8ef7fb] hover:from-[#2de0e7] hover:to-[#7ee6ea] text-black font-semibold px-8 py-3 text-base shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
@@ -100,19 +101,19 @@ export default function CartPage() {
             </Link>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     )
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
-      <Header />
+      {/* <Header /> */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-32">
         {/* Header */}
-        <div className="flex items-center justify-between mb-10">
-          <div className="flex items-center space-x-6">
-            <Link href="/">
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center">
+            {/* <Link href="/products">
               <Button
                 variant="ghost"
                 size="sm"
@@ -121,16 +122,16 @@ export default function CartPage() {
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Continue Shopping
               </Button>
-            </Link>
+            </Link> */}
             <div className="h-8 w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent" />
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">Shopping Cart</h1>
+              <h1 className="text-2xl sm:text-4xl font-bold text-gray-900 tracking-tight">Shopping Cart</h1>
               <p className="text-gray-600 mt-1">Review your items and proceed to checkout</p>
             </div>
           </div>
           <div className="text-right">
-            <div className="text-2xl font-bold text-gray-900">{getTotalItems()}</div>
-            <div className="text-sm text-gray-500">items</div>
+            <div className="text-2xl sm:text-4xl font-bold text-gray-900">{getTotalItems()}</div>
+            <div className="text-gray-500">Items</div>
           </div>
         </div>
 
@@ -164,9 +165,17 @@ export default function CartPage() {
                           <div className="flex justify-between items-start mb-3">
                             <div className="flex-1">
                               <div className="flex items-center space-x-3 mb-2">
-                                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-[#3AF0F7] transition-colors duration-200">
-                                  {item.name}
-                                </h3>
+                                {item.slug ? (
+                                  <Link href={`/product-detail/${item.slug}`} className="group hover:cursor-pointer">
+                                    <h3 className="text-xl font-semibold text-gray-900 hover:text-[#3AF0F7] transition-colors duration-300">
+                                      {item.name}
+                                    </h3>
+                                  </Link>
+                                ) : (
+                                  <h3 className="text-xl font-semibold text-gray-900">
+                                    {item.name}
+                                  </h3>
+                                )}
                                 <Button
                                   variant="ghost"
                                   size="sm"
@@ -280,114 +289,23 @@ export default function CartPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-4">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-200/50 sticky top-8 overflow-hidden">
-              <div className="bg-gradient-to-r from-[#3AF0F7]/10 to-[#8ef7fb]/10 p-6 border-b border-gray-200/50">
-                <h2 className="text-2xl font-bold text-gray-900 flex items-center">
-                  <div className="w-8 h-8 bg-gradient-to-r from-[#3AF0F7] to-[#8ef7fb] rounded-full flex items-center justify-center mr-3">
-                    <ShoppingBag className="w-4 h-4 text-black" />
-                  </div>
-                  Order Summary
-                </h2>
-              </div>
-
-              <div className="p-6">
-                <div className="space-y-4 mb-6">
-                  <div className="flex justify-between items-center text-gray-700">
-                    <span className="font-medium">Subtotal ({getTotalItems()} items)</span>
-                    <span className="font-semibold">€{getSubtotal().toFixed(2)}</span>
-                  </div>
-
-                  {appliedPromo && (
-                    <div className="flex justify-between items-center text-green-600 bg-green-50 p-3 rounded-xl">
-                      <span className="font-medium">Discount ({appliedPromo})</span>
-                      <span className="font-bold">-€{getDiscount().toFixed(2)}</span>
-                    </div>
-                  )}
-
-                  <div className="flex justify-between items-center text-gray-700">
-                    <span className="font-medium flex items-center">
-                      <Truck className="w-4 h-4 mr-2" />
-                      Shipping
-                    </span>
-                    <span className="font-semibold">
-                      {getShipping() === 0 ? (
-                        <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Free</Badge>
-                      ) : (
-                        `€${getShipping().toFixed(2)}`
-                      )}
-                    </span>
-                  </div>
-
-                  <div className="flex justify-between items-center text-gray-700">
-                    <span className="font-medium">Tax</span>
-                    <span className="font-semibold">€{getTax().toFixed(2)}</span>
-                  </div>
-
-                  <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl">
-                    <Separator className="mb-4 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
-                    <div className="flex justify-between items-center">
-                      <span className="text-xl font-bold text-gray-900">Total</span>
-                      <span className="text-2xl font-bold text-[#3AF0F7]">€{getTotal().toFixed(2)}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <Button className="w-full bg-gradient-to-r from-[#3AF0F7] to-[#8ef7fb] hover:from-[#2de0e7] hover:to-[#7ee6ea] text-black font-bold py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] rounded-xl relative overflow-hidden group">
-                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
-                  <span className="relative flex items-center justify-center">
-                    <Lock className="w-5 h-5 mr-3" />
-                    Secure Checkout
-                  </span>
-                </Button>
-
-                {/* Trust Badges */}
-                <div className="mt-6 space-y-4">
-                  <div className="grid grid-cols-1 gap-3">
-                    <div className="flex items-center text-sm text-gray-600 bg-gray-50 p-3 rounded-xl">
-                      <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                        <Shield className="w-4 h-4 text-green-600" />
-                      </div>
-                      <span className="font-medium">256-bit SSL Encryption</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600 bg-gray-50 p-3 rounded-xl">
-                      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                        <Truck className="w-4 h-4 text-blue-600" />
-                      </div>
-                      <span className="font-medium">Free shipping on orders over €100</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600 bg-gray-50 p-3 rounded-xl">
-                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
-                        <CreditCard className="w-4 h-4 text-purple-600" />
-                      </div>
-                      <span className="font-medium">All major cards accepted</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Payment Methods */}
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                  <p className="text-sm font-medium text-gray-700 mb-4">Accepted Payment Methods</p>
-                  <div className="grid grid-cols-4 gap-3">
-                    <div className="aspect-[3/2] bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg text-white text-xs flex items-center justify-center font-bold shadow-lg">
-                      VISA
-                    </div>
-                    <div className="aspect-[3/2] bg-gradient-to-br from-red-500 to-red-600 rounded-lg text-white text-xs flex items-center justify-center font-bold shadow-lg">
-                      MC
-                    </div>
-                    <div className="aspect-[3/2] bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg text-white text-xs flex items-center justify-center font-bold shadow-lg">
-                      AMEX
-                    </div>
-                    <div className="aspect-[3/2] bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg text-black text-xs flex items-center justify-center font-bold shadow-lg">
-                      PP
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <CartSummaryDetails
+              totalItems={getTotalItems()}
+              subtotal={getSubtotal()}
+              discount={getDiscount()}
+              shipping={getShipping()}
+              tax={getTax()}
+              total={getTotal()}
+              appliedPromo={appliedPromo}
+              getDiscount={getDiscount}
+              getShipping={getShipping}
+              getTax={getTax}
+              getTotal={getTotal}
+            />
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

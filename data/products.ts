@@ -2,6 +2,7 @@
 import type { StockStatus } from "../components/ProductCard/SingleProductCard";
 
 export interface ProductData {
+  slug: string;
   productImage: string;
   productName: string;
   salePrice?: string;
@@ -19,10 +20,11 @@ export interface ProductData {
 
 export const products: ProductData[] = [
   {
+    slug: "klint-arctic-mint-1",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
-    salePrice: "€ 3,60",
-    originalPrice: "€ 4,99",
+    salePrice: "€ 9,60",
+    originalPrice: "€ 14,99",
     saleLabel: "Sale 30%",
     shippingLabel: "Free shipping",
     stockStatus: "in_stock",
@@ -34,9 +36,10 @@ export const products: ProductData[] = [
     howToUse: "Open the can, take a pouch, and place it between your gum and upper lip. Enjoy for up to 30 minutes.",
   },
   {
+    slug: "velo-ice-cool-1",
     productImage: "/product-image.png",
     productName: "Velo Ice Cool",
-    originalPrice: "€ 4,99",
+    originalPrice: "€ 100,99",
     shippingLabel: "Free shipping",
     stockStatus: "low_stock",
     brand: "Velo",
@@ -47,6 +50,7 @@ export const products: ProductData[] = [
     howToUse: "Place one pouch under your lip. Do not chew or swallow. Dispose after use.",
   },
   {
+    slug: "loop-jalapeno-lime-1",
     productImage: "/product-image.png",
     productName: "Loop Jalapeno Lime",
     salePrice: "€ 3,99",
@@ -62,9 +66,10 @@ export const products: ProductData[] = [
     howToUse: "Insert a pouch between your gum and lip. Enjoy the flavor and sensation.",
   },
   {
+    slug: "zyn-citrus-mini-1",
     productImage: "/product-image.png",
     productName: "Zyn Citrus Mini",
-    originalPrice: "€ 4,49",
+    originalPrice: "€ 50,49",
     shippingLabel: "Free shipping",
     stockStatus: "no_stock",
     brand: "Zyn",
@@ -77,10 +82,11 @@ export const products: ProductData[] = [
 
 
   {
+    slug: "klint-arctic-mint-2",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
-    salePrice: "€ 3,60",
-    originalPrice: "€ 4,99",
+    salePrice: "€ 6,60",
+    originalPrice: "€ 30,99",
     saleLabel: "Sale 30%",
     shippingLabel: "Free shipping",
     stockStatus: "in_stock",
@@ -90,10 +96,11 @@ export const products: ProductData[] = [
     nicotinePerPouch: "6 mg",
   },
   {
+    slug: "klint-arctic-mint-3",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
-    salePrice: "€ 3,60",
-    originalPrice: "€ 4,99",
+    salePrice: "€ 35,60",
+    originalPrice: "€ 46,99",
     saleLabel: "Sale 30%",
     shippingLabel: "Free shipping",
     stockStatus: "in_stock",
@@ -103,10 +110,11 @@ export const products: ProductData[] = [
     nicotinePerPouch: "6 mg",
   },
   {
+    slug: "klint-arctic-mint-4",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
-    salePrice: "€ 3,60",
-    originalPrice: "€ 4,99",
+    salePrice: "€ 31,60",
+    originalPrice: "€ 90,99",
     saleLabel: "Sale 30%",
     shippingLabel: "Free shipping",
     stockStatus: "low_stock",
@@ -116,10 +124,11 @@ export const products: ProductData[] = [
     nicotinePerPouch: "6 mg",
   },
   {
+    slug: "klint-arctic-mint-5",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
     // salePrice: "€ 3,60",
-    originalPrice: "€ 4,99",
+    originalPrice: "€ 45,99",
     // saleLabel: "Sale 30%",
     shippingLabel: "Free shipping",
     stockStatus: "in_stock",
@@ -129,10 +138,11 @@ export const products: ProductData[] = [
     nicotinePerPouch: "6 mg",
   },
   {
+    slug: "klint-arctic-mint-6",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
-    salePrice: "€ 3,60",
-    originalPrice: "€ 4,99",
+    salePrice: "€ 31,60",
+    originalPrice: "€ 41,99",
     saleLabel: "Sale 30%",
     shippingLabel: "Free shipping",
     stockStatus: "low_stock",
@@ -142,6 +152,7 @@ export const products: ProductData[] = [
     nicotinePerPouch: "6 mg",
   },
   {
+    slug: "klint-arctic-mint-7",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
     // salePrice: "€ 3,60",
@@ -155,10 +166,11 @@ export const products: ProductData[] = [
     nicotinePerPouch: "6 mg",
   },
   {
+    slug: "klint-arctic-mint-8",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
-    salePrice: "€ 3,60",
-    originalPrice: "€ 4,99",
+    salePrice: "€ 20,60",
+    originalPrice: "€ 40,99",
     saleLabel: "Sale 30%",
     shippingLabel: "Free shipping",
     stockStatus: "last_3",
@@ -168,10 +180,11 @@ export const products: ProductData[] = [
     nicotinePerPouch: "6 mg",
   },
   {
+    slug: "klint-arctic-mint-9",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
-    salePrice: "€ 3,60",
-    originalPrice: "€ 4,99",
+    salePrice: "€ 13,60",
+    originalPrice: "€ 24,99",
     saleLabel: "Sale 30%",
     shippingLabel: "Free shipping",
     stockStatus: "last_3",
@@ -182,10 +195,11 @@ export const products: ProductData[] = [
   },
   
   {
+    slug: "klint-arctic-mint-10",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
-    salePrice: "€ 3,60",
-    originalPrice: "€ 4,99",
+    salePrice: "€ 53,60",
+    originalPrice: "€ 74,99",
     saleLabel: "Sale 30%",
     shippingLabel: "Free shipping",
     stockStatus: "no_stock",
@@ -195,10 +209,11 @@ export const products: ProductData[] = [
     nicotinePerPouch: "6 mg",
   },
   {
+    slug: "klint-arctic-mint-11",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
-    salePrice: "€ 3,60",
-    originalPrice: "€ 4,99",
+    salePrice: "€ 113,60",
+    originalPrice: "€ 204,99",
     saleLabel: "Sale 30%",
     shippingLabel: "Free shipping",
     stockStatus: "no_stock",
@@ -209,10 +224,11 @@ export const products: ProductData[] = [
   },
   
   {
+    slug: "klint-arctic-mint-12",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
-    salePrice: "€ 3,60",
-    originalPrice: "€ 4,99",
+    salePrice: "€ 73,60",
+    originalPrice: "€ 94,99",
     saleLabel: "Sale 30%",
     shippingLabel: "Free shipping",
     stockStatus: "low_stock",
@@ -222,10 +238,11 @@ export const products: ProductData[] = [
     nicotinePerPouch: "6 mg",
   },
   {
+    slug: "klint-arctic-mint-13",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
     // salePrice: "€ 3,60",
-    originalPrice: "€ 4,99",
+    originalPrice: "€ 504,99",
     // saleLabel: "Sale 30%",
     shippingLabel: "Free shipping",
     stockStatus: "low_stock",
@@ -235,6 +252,7 @@ export const products: ProductData[] = [
     nicotinePerPouch: "6 mg",
   },
   {
+    slug: "klint-arctic-mint-14",
     productImage: "/product-image.png",
     productName: "Klint Artic Mint",
     salePrice: "€ 3,60",

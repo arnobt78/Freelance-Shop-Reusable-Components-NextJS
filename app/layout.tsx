@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 
 
 export const metadata: Metadata = {
-  title: "Freelance QLLP – Next.js Reusable UI Components",
+  title: "Sunzz Pro – Online Shop",
   description: "Pixel-perfect Next.js category filter UI with Tailwind, TypeScript, and Figma-accurate design.",
   icons: {
     icon: "/favicon.ico",

@@ -1,34 +1,41 @@
 "use client"
 
+
 import { Button } from "@/components/ui/button"
-import { ShoppingCart, X, Plus, Minus, Trash2, CreditCard, Lock } from "lucide-react"
+import { ShoppingCart, X, CreditCard, Lock } from "lucide-react"
 import Link from "next/link"
+
+
 import { useCart } from "@/context/CartContext";
+import { useRouter } from "next/navigation";
+import CartSidebarItem from "@/components/Layout/CartSidebar/CartSidebarItem";
+
 
 export default function CartSidebar() {
   const { cartOpen, setCartOpen, cartItems, setCartItems } = useCart();
+  const router = useRouter();
 
   const updateQuantity = (id: number, newQuantity: number) => {
     if (newQuantity === 0) {
-      setCartItems((prev) => prev.filter((item) => item.id !== id))
+      setCartItems((prev) => prev.filter((item) => item.id !== id));
     } else {
-      setCartItems((prev) => prev.map((item) => (item.id === id ? { ...item, quantity: newQuantity } : item)))
+      setCartItems((prev) => prev.map((item) => (item.id === id ? { ...item, quantity: newQuantity } : item)));
     }
-  }
+  };
 
   const removeFromCart = (id: number) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id))
-  }
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  };
 
   const getTotalItems = () => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0)
-  }
+    return cartItems.reduce((total, item) => total + item.quantity, 0);
+  };
 
   const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
-  }
+    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
 
-  if (!cartOpen) return null
+  if (!cartOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
@@ -74,57 +81,12 @@ export default function CartSidebar() {
             ) : (
               <div className="space-y-3 md:space-y-4">
                 {cartItems.map((item, index) => (
-                  <div
-                    key={item.id}
-                    className="flex items-center space-x-3 md:space-x-4 p-3 md:p-4 bg-gradient-to-r from-gray-50 to-white rounded-lg md:rounded-xl border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1 animate-slide-in"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <div className="w-12 md:w-16 h-12 md:h-16 bg-gradient-to-br from-[#8cedf8] to-[#3AF0F7]/30 rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
-                      {item.image ? (
-                        <img
-                          src={item.image.startsWith('/') ? item.image : `/${item.image}`}
-                          alt={item.name || 'Product'}
-                          className="object-contain w-full h-full"
-                          style={{ maxWidth: '100%', maxHeight: '100%' }}
-                        />
-                      ) : (
-                        <div className="text-gray-400 text-xs">No Image</div>
-                      )}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-gray-900 text-sm truncate">{item.name}</h3>
-                      <p className="text-gray-500 text-xs">{item.brand}</p>
-                      <p className="text-[#3AF0F7] font-bold text-sm">€{item.price.toFixed(2)}</p>
-                    </div>
-                    <div className="flex items-center space-x-1 md:space-x-2">
-                      <Button
-                        size="icon"
-                        variant="outline"
-                        className="w-6 md:w-8 h-6 md:h-8 hover:bg-red-50 hover:border-red-200 transition-all duration-200"
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      >
-                        <Minus className="w-2 md:w-3 h-2 md:h-3" />
-                      </Button>
-                      <span className="w-6 md:w-8 text-center font-semibold bg-gray-50 rounded px-1 md:px-2 py-1 text-sm">
-                        {item.quantity}
-                      </span>
-                      <Button
-                        size="icon"
-                        variant="outline"
-                        className="w-6 md:w-8 h-6 md:h-8 hover:bg-green-50 hover:border-green-200 transition-all duration-200"
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      >
-                        <Plus className="w-2 md:w-3 h-2 md:h-3" />
-                      </Button>
-                    </div>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="text-red-500 hover:text-red-700 hover:bg-red-50 rounded-full transition-all duration-200 hover:scale-110 w-6 md:w-8 h-6 md:h-8"
-                      onClick={() => removeFromCart(item.id)}
-                    >
-                      <Trash2 className="w-3 md:w-4 h-3 md:h-4" />
-                    </Button>
+                  <div key={item.id} style={{ animationDelay: `${index * 100}ms` }} className="animate-slide-in">
+                    <CartSidebarItem
+                      item={item}
+                      updateQuantity={updateQuantity}
+                      removeFromCart={removeFromCart}
+                    />
                   </div>
                 ))}
               </div>
@@ -139,7 +101,13 @@ export default function CartSidebar() {
                   €{getTotalPrice().toFixed(2)}
                 </span>
               </div>
-              <Button className="w-full bg-gradient-to-r from-[#3AF0F7] to-[#8ef7fb] hover:from-[#2de0e7] hover:to-[#7ee6ea] text-black font-bold py-3 md:py-4 rounded-lg md:rounded-xl text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden group">
+              <Button
+                className="w-full bg-gradient-to-r from-[#3AF0F7] to-[#8ef7fb] hover:from-[#2de0e7] hover:to-[#7ee6ea] text-black font-bold py-3 md:py-4 rounded-lg md:rounded-xl text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
+                onClick={() => {
+                  setCartOpen(false);
+                  router.push("/cart");
+                }}
+              >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
                 <span className="relative flex items-center justify-center">
                   <Lock className="w-4 md:w-5 h-4 md:h-5 mr-2" />
@@ -155,5 +123,5 @@ export default function CartSidebar() {
         </div>
       </div>
     </div>
-  )
+  );
 }

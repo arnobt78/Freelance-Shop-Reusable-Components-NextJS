@@ -85,11 +85,12 @@ export default function Header({ allProducts = [] }: { allProducts?: any[] } = {
           ...prev,
           {
             id,
-            name: product.name,
+            name: product.name || product.productName,
             price: parsePrice(product.salePrice ?? product.price ?? product.originalPrice),
             quantity: 1,
-            image: product.image,
+            image: product.image || product.productImage,
             brand: product.brand,
+            slug: product.slug,
           },
         ];
       }
@@ -113,10 +114,11 @@ export default function Header({ allProducts = [] }: { allProducts?: any[] } = {
 
           <nav className="hidden md:flex items-center space-x-8">
             {[
-              { label: "Shop", href: "/categories" },
-              { label: "Brands", href: "/categories?filter=brands" },
-              { label: "Flavor", href: "/categories?filter=flavors" },
-              { label: "Strength", href: "/categories?filter=strength" },
+              // { label: "Shop", href: "/categories" },
+              { label: "Shop", href: "/products" },
+              { label: "Brands", href: "/products?filter=brands" },
+              { label: "Flavor", href: "/products?filter=flavors" },
+              { label: "Strength", href: "/products?filter=strength" },
               { label: "snuzzPRO", href: "/pro" },
             ].map((item, index) => (
               <a
@@ -253,10 +255,11 @@ export default function Header({ allProducts = [] }: { allProducts?: any[] } = {
         <div className="md:hidden w-full bg-white border-b border-gray-200">
           <div className="px-4 py-6 space-y-4">
             {[
-              { label: "Shop", href: "/categories" },
-              { label: "Brands", href: "/categories?filter=brands" },
-              { label: "Flavor", href: "/categories?filter=flavors" },
-              { label: "Strength", href: "/categories?filter=strength" },
+              // { label: "Shop", href: "/categories" },
+              { label: "Shop", href: "/products" },
+              { label: "Brands", href: "/products?filter=brands" },
+              { label: "Flavor", href: "/products?filter=flavors" },
+              { label: "Strength", href: "/products?filter=strength" },
               { label: "SnuzzPro", href: "/pro" },
             ].map((item, index) => (
               <a

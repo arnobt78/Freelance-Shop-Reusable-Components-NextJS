@@ -1,4 +1,5 @@
 import React from "react";
+import ProductQuantityImageOptionCard from "./Purchase/ProductQuantityImageOptionCard";
 
 // Data for each quantity image card
 
@@ -75,40 +76,18 @@ export const ProductQuantityImageSection: React.FC<ProductQuantityImageSectionPr
   onSelect,
 }) => {
   return (
-    <div className="w-full flex flex-row justify-center gap-2 sm:gap-6 mt-2 mb-2">
-      {options.map((opt, idx) => {
-        const isSelected = selected === opt.value;
-        return (
-          <button
-            type="button"
-            key={opt.label}
-            className={`relative flex flex-col items-center justify-center bg-[#F0F1F1] rounded-[5.8px] shadow focus:outline-none transition-all duration-300 ${isSelected ? 'border-2 border-black/90' : 'border border-transparent'} group`}
-            style={{ width: 86.5, height: 86.5, cursor: onSelect ? 'pointer' : 'default' }}
-            aria-pressed={isSelected}
-            tabIndex={0}
-            onClick={() => onSelect?.(opt.value)}
-          >
-            {/* Discount badge */}
-            <div
-              className="absolute left-1/2 -translate-x-1/2 -top-3 flex flex-row justify-center items-center px-3 py-1 bg-[#EBF5F5] rounded-[6.9px] shadow"
-              style={{ minWidth: 43, height: 17 }}
-            >
-              <span className="text-[10.3px] leading-[13px] font-normal text-black uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>{opt.percent}</span>
-            </div>
-            {/* Can SVG and label, centered */}
-            <div className="relative flex flex-col items-center justify-center w-full grow" style={{height: '60px'}}>
-            {/* <span className="absolute left-1/2 top-1.5/4 -translate-x-1/2 -translate-y-1/2 text-[18px] font-medium italic text-black select-none pointer-events-none z-10" style={{ fontFamily: 'Inter, sans-serif', width: '100%', textAlign: 'center' }}>{opt.label}</span> */}
-              <div className="flex items-center justify-center w-full h-full">
-                <CanSVG label={opt.label} />
-              </div>
-            </div>
-            {/* Optionally show description below */}
-            {/* {opt.description && (
-              <span className=" text-xs text-gray-500 group-hover:text-black transition-colors duration-300">{opt.description}</span>
-            )} */}
-          </button>
-        );
-      })}
+    <div className="w-full flex flex-row items-center justify-between gap-2 sm:gap-6 mt-2 mb-2">
+      {options.map((opt, idx) => (
+        <ProductQuantityImageOptionCard
+          key={opt.label}
+          percent={opt.percent}
+          label={opt.label}
+          value={opt.value}
+          description={opt.description}
+          isSelected={selected === opt.value}
+          onSelect={onSelect}
+        />
+      ))}
     </div>
   );
 };
