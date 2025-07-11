@@ -110,52 +110,52 @@ export default function SnuzzProLanding() {
       </div>
 
       {/* Product Section */}
-      <section ref={productSectionRef} className="flex flex-col items-center justify-center px-8 py-20 bg-transparent relative z-40">
-        <div className="bg-white rounded-2xl shadow-lg p-12 max-w-md w-full text-center">
+      <section ref={productSectionRef} className="flex flex-col items-center justify-center px-4 sm:px-8 py-10 sm:py-20 bg-transparent relative z-40">
+        <div className="bg-white rounded-2xl shadow-lg p-8 sm:p-12 max-w-full sm:max-w-md w-full text-center">
           <div className="mb-8">
             <img
               src="/pro-logo.png"
               alt="Snuzz PRO"
-              width={200}
-              height={60}
-              className="h-12 w-auto mx-auto mb-6"
+              width={160}
+              height={48}
+              className="h-10 sm:h-12 w-auto mx-auto mb-4 sm:mb-6"
               loading="lazy"
               draggable={false}
             />
             <div className="text-gray-500 border-b border-gray-300 border-1 pb-6">
-              <p>Unleash the Power of</p>
-              <p>Knowledge with snuzz PRO</p>
+              <p className="text-sm sm:text-base">Unleash the Power of</p>
+              <p className="text-sm sm:text-base">Knowledge with snuzz PRO</p>
             </div>
           </div>
 
-          <div className="space-y-4 mb-8 text">
-            <div className="flex items-center space-x-3">
-              <Check className="h-5 w-5 text-green-600 flex-shrink-0" />
-              <span className="text-gray-800">6+ hours of knowledge</span>
+          <div className="space-y-4 mb-8 text-base sm:text-lg">
+            <div className="flex items-center space-x-4">
+              <Check className="h-4 sm:h-5 w-4 sm:w-5 text-green-600 flex-shrink-0" />
+              <span className="text-md sm:text-base text-gray-800">6+ hours of knowledge</span>
             </div>
-            <div className="flex items-center space-x-3">
-              <Check className="h-5 w-5 text-green-600 flex-shrink-0" />
-              <span className="text-gray-800">Know the risks</span>
+            <div className="flex items-center space-x-4">
+              <Check className="h-4 sm:h-5 w-4 sm:w-5 text-green-600 flex-shrink-0" />
+              <span className="text-md sm:text-base text-gray-800">Know the risks</span>
             </div>
-            <div className="flex items-center space-x-3">
-              <Check className="h-5 w-5 text-green-600 flex-shrink-0" />
-              <span className="text-gray-800">Avoid addiction</span>
+            <div className="flex items-center space-x-4">
+              <Check className="h-4 sm:h-5 w-4 sm:w-5 text-green-600 flex-shrink-0" />
+              <span className="text-md sm:text-base text-gray-800">Avoid addiction</span>
             </div>
-            <div className="flex items-center space-x-3">
-              <Check className="h-5 w-5 text-green-600 flex-shrink-0" />
-              <span className="text-gray-800">Be healthy!</span>
+            <div className="flex items-center space-x-4">
+              <Check className="h-4 sm:h-5 w-4 sm:w-5 text-green-600 flex-shrink-0" />
+              <span className="text-md sm:text-base text-gray-800">Be healthy!</span>
             </div>
           </div>
 
           <div className="mb-8">
             <div className="flex items-baseline justify-center mb-2">
-              <span className="text-5xl font-bold text-gray-900">€10</span>
-              <span className="text-gray-500 ml-2">per 14 days</span>
+              <span className="text-3xl sm:text-5xl font-bold text-gray-900">€10</span>
+              <span className="text-xs sm:text-base text-gray-500 ml-2">per 14 days</span>
             </div>
           </div>
 
           <Button
-            className="w-full bg-transparent border-2 py-3 rounded-lg font-medium transition-all duration-300"
+            className="w-full bg-transparent border-2 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 text-xs sm:text-base"
             style={{
               borderColor: "#22d3ee",
               color: "#22d3ee",
