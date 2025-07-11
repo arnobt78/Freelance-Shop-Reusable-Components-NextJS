@@ -5,7 +5,7 @@ import { ChevronDown, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Header from "@/components/Header"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useCart } from "@/context/CartContext";
 import Footer from "@/components/Footer"
 
@@ -42,58 +42,75 @@ export default function SnuzzProLanding() {
     },
   ];
 
+
+  // ...existing code...
+  const productSectionRef = useRef<HTMLDivElement>(null);
+
+  const handleScrollDown = () => {
+    if (productSectionRef.current) {
+      productSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div
       className="min-h-screen"
-      style={{
-        background: "radial-gradient(ellipse at center, #d6fcff 0%, #e8fdff 50%, #ffffff 100%)",
-      }}
     >
       {/* Header: Hide on any screen if cart is open */}
       {!cartOpen && <Header allProducts={allProducts} />}
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center px-8 py-20 pt-32 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 max-w-4xl">Take nicotine under control!</h1>
+      <div className="relative w-full bg-transparent">
+        {/* Background Ellipse */}
+        <div
+          className="absolute w-[1419px] h-[1512px] left-[-66px] top-[-713px] opacity-50 pointer-events-none z-0"
+          style={{
+            background: "radial-gradient(50% 50% at 50% 50%, #3CF9FF 0%, #F5FFFF 100%)",
+            transform: "matrix(0, 1, 1, 0, 0, 0)",
+          }}
+        />
+        <section className="relative flex flex-col items-center justify-center px-8 py-20 pt-32 text-center z-10">
+          <h1 className="text-[28px] sm:text-[40px] font-semibold text-gray-900 mb-6">Take nicotine under control!</h1>
 
-        <div className="space-y-2 mb-8">
-          <p className="text-lg text-gray-700">Afraid of negative effects of nicotine on your health?</p>
-          <p className="text-lg text-gray-700">Become professional snus user with snuzz PRO.</p>
-        </div>
-
-        <div className="flex items-center space-x-4 mb-20">
-          <Button
-            className="text-black font-medium px-8 py-3 rounded-md transition-all duration-300"
-            style={{
-              backgroundColor: "#22d3ee",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#06b6d4"
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#22d3ee"
-            }}
-          >
-            Try for free
-          </Button>
-          <Button
-            variant="outline"
-            className="bg-transparent border-gray-400 text-gray-700 hover:bg-gray-50 px-8 py-3 rounded-md transition-all duration-300"
-          >
-            Log in
-          </Button>
-        </div>
-
-        <div className="flex flex-col items-center">
-          <div className="bg-black rounded-full p-2 mb-2">
-            <ChevronDown className="h-4 w-4 text-white" />
+          <div className="mb-8">
+            <p className="text-lg text-gray-700">Afraid of negative effects of nicotine on your health?</p>
+            <p className="text-lg text-gray-700">Become professional snus user with snuzz PRO.</p>
           </div>
-          <span className="text-sm text-gray-600">Scroll Down</span>
-        </div>
-      </section>
+
+          <div className="flex items-center space-x-4 mb-20">
+            <Button
+              className="text-black font-medium px-8 py-3 rounded-md transition-all duration-300"
+              style={{
+                backgroundColor: "#22d3ee",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#06b6d4"
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#22d3ee"
+              }}
+            >
+              Try for free
+            </Button>
+            <Button
+              variant="outline"
+              className="bg-transparent border-gray-400 text-gray-700 hover:bg-gray-50 px-8 py-3 rounded-md transition-all duration-300"
+            >
+              Log in
+            </Button>
+          </div>
+
+          <div className="flex flex-col items-center mt-24 cursor-pointer hover:opacity-75" onClick={handleScrollDown}>
+            <div className="bg-black rounded-full p-2 mb-2">
+              <ChevronDown className="h-4 w-4 text-white" />
+            </div>
+            <span className="text-sm text-gray-600">Scroll Down</span>
+          </div>
+        </section>
+      </div>
 
       {/* Product Section */}
-      <section className="flex flex-col items-center justify-center px-8 py-20 bg-gray-50">
+      <section ref={productSectionRef} className="flex flex-col items-center justify-center px-8 py-20 bg-transparent relative z-40">
         <div className="bg-white rounded-2xl shadow-lg p-12 max-w-md w-full text-center">
           <div className="mb-8">
             <img
@@ -105,13 +122,13 @@ export default function SnuzzProLanding() {
               loading="lazy"
               draggable={false}
             />
-            <div className="space-y-1 text-gray-500">
+            <div className="text-gray-500 border-b border-gray-300 border-1 pb-6">
               <p>Unleash the Power of</p>
               <p>Knowledge with snuzz PRO</p>
             </div>
           </div>
 
-          <div className="space-y-4 mb-8 text-left">
+          <div className="space-y-4 mb-8 text">
             <div className="flex items-center space-x-3">
               <Check className="h-5 w-5 text-green-600 flex-shrink-0" />
               <span className="text-gray-800">6+ hours of knowledge</span>
