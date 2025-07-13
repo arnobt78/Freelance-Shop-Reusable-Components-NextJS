@@ -13,7 +13,7 @@ const CartItem: React.FC<CartItemProps> = ({ item, onUpdateQuantity, onRemove })
     <div className="flex items-start space-x-6">
       {/* Product Image */}
       <div className="relative">
-        <div className="w-24 h-24 bg-gradient-to-br from-[#8cedf8]/30 via-white to-[#3AF0F7]/20 rounded-2xl flex items-center justify-center shadow-lg border border-gray-100 group-hover:shadow-xl transition-all duration-300 overflow-hidden">
+            <div className="w-24 h-24 bg-transparent rounded-2xl flex items-center justify-center shadow-lg border border-gray-100 group-hover:shadow-xl transition-all duration-300 overflow-hidden">
           {typeof item.image === 'string' && item.image.startsWith('/') ? (
             <img
               src={item.image}

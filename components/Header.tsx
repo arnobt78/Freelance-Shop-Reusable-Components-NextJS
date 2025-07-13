@@ -6,7 +6,12 @@ import { Search, ShoppingCart, Menu, X, Plus, Star, ShoppingBag } from "lucide-r
 import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
 
-export default function Header({ allProducts = [] }: { allProducts?: any[] } = {}) {
+type HeaderProps = {
+  allProducts?: any[];
+  noBlur?: boolean;
+};
+
+export default function Header({ allProducts = [], noBlur = false }: HeaderProps) {
   const { cartItems, setCartItems, cartOpen, setCartOpen } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -102,7 +107,7 @@ export default function Header({ allProducts = [] }: { allProducts?: any[] } = {
   };
 
   return (
-    <header className="w-full bg-gradient-to-br from-gray-50 via-white to-blue-50/30 text-[1.1rem] fixed top-0 left-0 z-50 shadow-md border-b border-gray-100 backdrop-blur-md">
+    <header className={`w-full bg-transparent text-[1.1rem] fixed top-0 left-0 z-50${noBlur ? '' : ' backdrop-blur-md'}`}> 
       <div className="max-w-[1440px] mx-auto px-8 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-12">

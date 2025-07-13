@@ -6,10 +6,10 @@ import FeatureCardItem from "@/components/Home/Feature/FeatureCardItem";
 
 export default function FeatureCard() {
   return (
-    <section className="px-4 bg-white">
-      <div className="max-w-[1440px] mx-auto">
-        <div className="w-full flex flex-col items-center justify-center py-6">
-          <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-12 max-w-5xl mx-auto">
+    <section className="px-4 bg-transparent">
+      <div className="max-w-[1440px] mx-auto bg-transparent">
+        <div className="w-full flex flex-col items-center justify-center py-6 bg-transparent">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-12 max-w-5xl mx-auto bg-transparent">
             <FeatureCardItem
               imgSrc="/dollar.svg"
               alt="Best Price on Market"

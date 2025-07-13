@@ -8,7 +8,7 @@ import AnimationsAndStyles from "@/components/Home/AnimationsAndStyles";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white text-[18px] w-full overflow-x-hidden">
+    <div className="min-h-screen text-[18px] w-full overflow-x-hidden">
       {/* Header and CartSidebar are now global in layout.tsx */}
       <HeroSection />
       <FeatureCard />

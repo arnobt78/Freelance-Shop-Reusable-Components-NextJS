@@ -57,7 +57,7 @@ export default function SnuzzProLanding() {
       className="min-h-screen"
     >
       {/* Header: Hide on any screen if cart is open */}
-      {!cartOpen && <Header allProducts={allProducts} />}
+      {!cartOpen && <Header allProducts={allProducts} noBlur />}
 
       {/* Hero Section */}
       <div className="relative w-full bg-transparent">

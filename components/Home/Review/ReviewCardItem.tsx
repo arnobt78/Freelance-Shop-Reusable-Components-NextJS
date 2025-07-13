@@ -11,7 +11,7 @@ interface ReviewCardItemProps {
 
 export default function ReviewCardItem({ testimonial }: ReviewCardItemProps) {
   return (
-    <Card className="border-0 transition-all duration-300 bg-gradient-to-br from-gray-100 to-[#F0F1F1] w-full max-w-[284px] rounded-[19px]">
+    <Card className="border-0 transition-all duration-300 bg-transparent w-full max-w-[284px] rounded-[19px]">
       <CardContent className="px-5 py-2">
         <div className="flex items-center space-x-1 mb-1">
           {[...Array(5)].map((_, j) => (
